@@ -1,36 +1,30 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-		<meta charset="UTF-8">
+	<meta charset="UTF-8">
         <title>Sustentabilidade Modular</title>
-        <script>
-            
-
+        <script> 
             function BotaoCarga1(){
-                var request = new XMLHttpRequest();
+            	var request = new XMLHttpRequest();
                 request.open("GET", "ajax_carga1",true);
                 request.send(null);
             }
-
             function BotaoCarga2(){
                 var request = new XMLHttpRequest();
                 request.open("GET", "ajax_carga2",true);
                 request.send(null);
-            }
-			
-			function BotaoCarga3(){
+            }	
+	    function BotaoCarga3(){
                 var request = new XMLHttpRequest();
                 request.open("GET", "ajax_carga3",true);
                 request.send(null);
             }
-			function BotaoCarga4(){
+	    function BotaoCarga4(){
                 var request = new XMLHttpRequest();
                 request.open("GET", "ajax_carga4",true);
                 request.send(null);
-            }
-			
+            }	
         </script>
-
         <style type="text/css">
             div > h2{
                 color: #FFF;
@@ -72,15 +66,14 @@
             .carga{
                 font-size: 30px;
                 font-weight: bold;
-                margin-top: 50px;
-				
+                margin-top: 50px;		
             }
 
             #botao1 {
-               border-color: #258e48;
+                border-color: #258e48;
                 border-style: solid;
                 background-color: #fcf3b0;
-				border-radius: 20px;
+		border-radius: 20px;
                 width: 150px;
                 height: 150px;
                 text-align: center;
@@ -88,40 +81,36 @@
                 margin-bottom: 5px;
                 cursor: pointer;
             }
-
             #botao2 {
                 border-color: #258e48;
                 border-style: solid;
                 background-color: #fcf3b0;
-				border-radius: 20px;
+		border-radius: 20px;
                 width: 150px;
                 height: 150px;
                 text-align: center;
                 display: inline-block;
                 margin-bottom: 5px;
                 cursor: pointer;
-               
             }
-			
-			#botao3 {
+	    #botao3 {
                 border-color: #258e48;
                 border-style: solid;
                 background-color: #fcf3b0;
-				border-radius: 20px;
+		border-radius: 20px;
                 width: 150px;
                 height: 150px;
                 text-align: center;
                 display: inline-block;
                 margin-bottom: 5px;
                 cursor: pointer;
-            }
-			
-			#botao4 {
+            }		
+	    #botao4 {
                 border-color: #258e48;
                 border-style: solid;
                 background-color: #d1e9f9;
-				background:url(ar.png) no-repeat;
-				border-radius: 20px;
+		background:url(ar.png) no-repeat;
+		border-radius: 20px;
                 width: 150px;
                 height: 150px;
                 text-align: center;
@@ -129,12 +118,8 @@
                 margin-bottom: 5px;
                 cursor: pointer;
             }
-			
-			
-
         </style> 
     </head>
-    
     <body>
         <center>
         <div class="header"> 
@@ -144,34 +129,25 @@
 	        </div>
             <br>
         </div>
-       
-    
         <br>
-
         <div id="botao1" onclick="BotaoCarga1()">
-			<h5>Iluminação:</h5>
-            <p class="carga">Sala</p>
+		<h5>Iluminação:</h5>
+        	<p class="carga">Sala</p>
         </div>
-		
-        <div id="botao2" onclick="BotaoCarga2()">
-			<h5>Iluminação:</h5>
-            <p class="carga">Quarto</p>
+	<div id="botao2" onclick="BotaoCarga2()">
+		<h5>Iluminação:</h5>
+            	<p class="carga">Quarto</p>
         </div>
-		
-		<br>		
-		<div id="botao3" onclick="BotaoCarga3()">
-			<h5>Iluminação:</h5>
-            <p class="carga">Cozinha</p>
+	<br>		
+	<div id="botao3" onclick="BotaoCarga3()">
+		<h5>Iluminação:</h5>
+        	<p class="carga">Cozinha</p>
         </div>		
-		<div id="botao4" onclick="BotaoCarga4()">
-            
-			<h5>Acionar:</h5>
-			<p class="carga">AR</p>
+	<div id="botao4" onclick="BotaoCarga4()">
+        	<h5>Acionar:</h5>
+		<p class="carga">AR</p>
         </div>
         <br>
-
-        
-
-     </center>
+	</center>
     </body>
 </html>
