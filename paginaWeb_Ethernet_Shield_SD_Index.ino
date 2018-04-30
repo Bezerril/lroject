@@ -1,4 +1,18 @@
-//#include <Wire.h>
+/*
+  Associação Paraibana de Ensino Renovado - ASPER 
+            Trabalho de Conclusão de Curso
+  Curso: Ciência da Computação
+  Aluno: Ramon Quirino Bezerril
+  Título: SUSTENTABILIDADE MODULAR: Automatização em ambiente
+  com baixo custo dando ênfase na economia de recursos naturais.
+  Orientador: Professor Msc. Messias R. Batista 
+  Data: 13/04/2017
+  Versão: 0.8.6
+  Todo o conteúdo deste trabalho se encontra disponível
+  gratuitamente em:
+  https://github.com/Bezerril/SustentabilidadeModular.git
+  
+*/
 
 #include <SPI.h>
 #include <Ethernet.h>
@@ -23,13 +37,11 @@ File webFile;
 char HTTP_req[REQ_BUF_SZ] = {
   0};
 char req_index = 0;
-
 int flag1, flag2, flag3, flag4 = 0;
 const int carga1 = 2;
 const int carga2 = A0;
 const int carga3 = A2;
 const int carga4 = A3;
-
 int led = 9;
 
 void setup()
@@ -40,15 +52,12 @@ void setup()
   pinMode(carga4, OUTPUT);
   analogReference(INTERNAL);
   lcd.begin(16, 2);
-
   pinMode(led, OUTPUT); // led
   //Serial.begin(9600);       
-
   //Serial.println("Inicializando cartao microSD...");
   lcd.setCursor(0, 0);
   lcd.print("Carregando...   ");
   delay(1000);
-  
   if (!SD.begin(4)) {
     //Serial.println("ERRO - inicializacao do cartao falhou!");
     lcd.setCursor(0, 0);
@@ -59,7 +68,6 @@ void setup()
   lcd.setCursor(0, 0);
   lcd.print("Servidor Ativo  ");
   delay(1000);
-  
   if (!SD.exists("index.htm")) {
     //Serial.println("ERRO - index.htm nao foi encontrado!");
     lcd.setCursor(0, 0);
@@ -70,20 +78,16 @@ void setup()
   lcd.setCursor(0, 0);
   lcd.print("Carregando index");
   delay(1000);
-
   lcd.setCursor(0, 0);
   lcd.print("Box Modular v.86");
-  
   Ethernet.begin(mac, ip);  
   server.begin();
-
 }
 
 void loop()
 { 
   EthernetClient client = server.available();  //verifica se existe alguém querendo se conectar
   if (client) {  // existe cliente?
-    
     boolean currentLineIsBlank = true;
     while (client.connected()) {    
       digitalWrite(led, HIGH);
@@ -129,7 +133,6 @@ void loop()
           //digitalWrite(ledFrontal, HIGH);
           req_index = 0; //reseta o index do buffer e a variável que armazena as requests
           StrClear(HTTP_req, REQ_BUF_SZ);
-          
           break;
         }
         
@@ -137,24 +140,19 @@ void loop()
         if (c == '\n') {
           //verifica se acabou a linha, já que \n é o ultimo caracter
           currentLineIsBlank = true;
-          
         } 
         else if (c != '\r') {
           // o cliente ainda está enviando informações
           currentLineIsBlank = false;
-            
         }
       } 
     } 
     delay(1);      // dá um tempo para o browser receber os dado
     client.stop(); // fecha a conexão
-    
   }
-
 }
 //******************************************************************
 void SetCarga1(){
-  
   if(flag1 == 0){
     lcd.setCursor(0, 1);
     lcd.print("Sala          ON");
@@ -170,7 +168,6 @@ void SetCarga1(){
 }
 
 void SetCarga2(){
-  
   if(flag2 == 0){
    lcd.setCursor(0, 1);
    lcd.print("Quarto        ON");
@@ -185,9 +182,7 @@ void SetCarga2(){
   }
   
 }
-
-void SetCarga3(){
-  
+void SetCarga3(){ 
   if(flag3 == 0){
    lcd.setCursor(0, 1);
    lcd.print("Cozinha       ON");
@@ -200,11 +195,8 @@ void SetCarga3(){
     digitalWrite(carga3, LOW);
     flag3 = 0;  
   }
-  
 }
-
-void SetCarga4(){
-  
+void SetCarga4(){ 
   if(flag4 == 0){
    lcd.setCursor(0, 1);
    lcd.print("Climatizado   ON");
@@ -217,9 +209,7 @@ void SetCarga4(){
     digitalWrite(carga4, LOW);
     flag4 = 0;  
   }
-  
 }
-
 // funcao para limpar arrays (no nosso caso, as variaveis que armazenam requests)
 void StrClear(char *str, char length)
 {
@@ -227,19 +217,15 @@ void StrClear(char *str, char length)
     str[i] = 0;
   }
 }
-
 // funcao que procura pela string SFIND em STR
 // retorna 1 se a string for encontrada
 // retorna 0 se a setring não for encontrada
 char StrContains(char *str, char *sfind)
-{
-  
+{ 
   char found = 0;
   char index = 0;
   char len;
-
   len = strlen(str);
-
   if (strlen(sfind) > len) {
     return 0;
   }
@@ -257,4 +243,3 @@ char StrContains(char *str, char *sfind)
   }
   return 0;
 }
-
